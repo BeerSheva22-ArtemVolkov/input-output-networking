@@ -32,7 +32,7 @@ class InputOutputTest {
 
 	}
 
-	
+	@Disabled
 	@Test
 	void printDirectoryFileTest() throws IOException {
 		printDirectoryFile("C:\\Users\\art96\\Documents\\Scanned Documents", 0);
@@ -45,7 +45,8 @@ class InputOutputTest {
 	}
 
 	private void printFolders(Path path, int space, int curLevel) throws IOException {
-		System.out.println(" ".repeat(space * SPACE_COUNT) + "<" + path.getFileName() + "> - dir");
+		System.out.print(" ".repeat(space * SPACE_COUNT) + "<" + path.getFileName());
+		System.out.printf("> - %s\n", Files.isDirectory(path) ? "folder" : "file");
 		if (--curLevel != 0)
 			printFilesFromFolders(path, ++space, curLevel);
 	}
@@ -72,7 +73,8 @@ class InputOutputTest {
 	}
 
 	void printFolder(File dir, int space, int curLevel) {
-		System.out.println(" ".repeat(space * SPACE_COUNT) + "<" + dir.getName() + "> - dir");
+		System.out.print(" ".repeat(space * SPACE_COUNT) + "<" + dir.getName());
+		System.out.printf("> - %s\n", dir.isFile() ? "file" : "folder");
 		if (--curLevel != 0)
 			printFilesFromFolder(dir, ++space, curLevel);
 	}
@@ -85,5 +87,6 @@ class InputOutputTest {
 				printFolder(file, space, curLevel);
 		}
 	}
+	
 }
 
