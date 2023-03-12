@@ -2,8 +2,8 @@ package telran.io;
 
 public class DisplayResult {
 
-	private long fileSize;
-	private long copyTime;
+	protected long fileSize;
+	protected long copyTime;
 	
 	public DisplayResult(long fileSize, long copyTime){
 		this.copyTime = copyTime;
@@ -15,11 +15,4 @@ public class DisplayResult {
 				"Time of copying : " + copyTime;
 	}
 
-	public long getFileSize() {
-		return fileSize;
-	}
-
-	public long getCopyTime() {
-		return copyTime;
-	}
 }

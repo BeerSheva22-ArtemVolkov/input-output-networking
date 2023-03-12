@@ -14,8 +14,10 @@ public class FilesCopy extends Copy{
 	@Override
 	protected long copy() throws Exception {
 		long res = 0;
-		if (Files.exists(Path.of(getDestFilePath())) && isOverwrite() || !Files.exists(Path.of(getDestFilePath())))
-			res = Files.copy(Path.of(getSrcFilePath()), new FileOutputStream(new File(getDestFilePath())));
+		Path source = Path.of(srcFilePath);
+		Path dest = Path.of(destFilePath);
+		if (Files.exists(dest) && overwrite || !Files.exists(dest))
+			res = Files.copy(source, new FileOutputStream(new File(destFilePath)));
 		return res;
 	}
 

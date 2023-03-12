@@ -2,7 +2,7 @@ package telran.io;
 
 public class DisplayResultBuffer extends DisplayResult{
 
-	private long bufferSize;
+	protected long bufferSize;
 	
 	DisplayResultBuffer(long fileSize, long copyTime, long bufferSize) {
 		super(fileSize, copyTime);
@@ -12,10 +12,6 @@ public class DisplayResultBuffer extends DisplayResult{
 	@Override
 	public String toString() {
 		return super.toString() + "\nSize of buffer : " + bufferSize;
-	}
-	
-	public long getBufferSize() {
-		return bufferSize;
 	}
 	
 }

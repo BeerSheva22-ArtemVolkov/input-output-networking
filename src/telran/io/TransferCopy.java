@@ -13,8 +13,8 @@ public class TransferCopy extends Copy{
 	@Override
 	protected long copy() throws Exception {
 		long res = 0;
-		if (Files.exists(Path.of(getDestFilePath())) && isOverwrite() || !Files.exists(Path.of(getDestFilePath())))
-			try (InputStream is = new FileInputStream(new File(getSrcFilePath())); OutputStream os = new FileOutputStream(new File(getDestFilePath()))){
+		if (Files.exists(Path.of(destFilePath)) && overwrite || !Files.exists(Path.of(destFilePath)))
+			try (InputStream is = new FileInputStream(new File(srcFilePath)); OutputStream os = new FileOutputStream(new File(destFilePath))){
 				res = is.transferTo(os);
 			}
 		return res;

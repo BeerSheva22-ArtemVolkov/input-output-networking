@@ -15,10 +15,10 @@ public class BufferCopy extends Copy {
 
 	@Override
 	protected long copy() throws Exception {
-		int res = 0;
-		if (Files.exists(Path.of(getDestFilePath())) && isOverwrite() || !Files.exists(Path.of(getDestFilePath())))
-			try (InputStream is = new FileInputStream(new File(getSrcFilePath()));
-					OutputStream os = new FileOutputStream(new File(getDestFilePath()))) {
+		long res = 0L;
+		if (Files.exists(Path.of(destFilePath)) && overwrite || !Files.exists(Path.of(destFilePath)))
+			try (InputStream is = new FileInputStream(new File(srcFilePath));
+					OutputStream os = new FileOutputStream(new File(destFilePath))) {
 				byte[] buffer = new byte[(int) bufferSize];
 				int length;
 				while ((length = is.read(buffer)) > 0) {

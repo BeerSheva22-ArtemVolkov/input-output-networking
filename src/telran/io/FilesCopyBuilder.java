@@ -6,6 +6,13 @@ public class FilesCopyBuilder {
 
 	public Copy build(String type, String[] args) throws Exception {
 
+		if (args.length < 3) {
+			throw new Exception("Not enough arguments to start application");
+		}
+		if (args.length > 4) {
+			throw new Exception("Too much arguments to start application");
+		}
+		
 		Copy res = null;
 		String pathFrom = getPathFrom(args);
 		String pathTo = getPathTo(args);
